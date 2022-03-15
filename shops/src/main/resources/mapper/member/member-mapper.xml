@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.shop.member.MemberMapper">
+	<select id="login" resultType="com.site.shop.member.MemberVo">
+		select * from member where m_id=#{id} and m_pw=#{pw}
+	</select>
+</mapper>
