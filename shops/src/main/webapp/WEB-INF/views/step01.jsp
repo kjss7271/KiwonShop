@@ -27,7 +27,7 @@
 $(document).ready(function() {
 	var smsStatus = 0;
 	$('.gbtn').click(function(){
-		const popup = window.open('/coolsmsPopup', '_self', 'width=700px,height=800px,scrollbars=yes');
+		const popup = window.open('/coolsmsPopup', '휴대폰인증', 'width=700px,height=800px,scrollbars=yes');
 	});
 	
 	

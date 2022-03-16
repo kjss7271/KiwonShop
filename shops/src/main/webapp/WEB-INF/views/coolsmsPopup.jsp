@@ -126,7 +126,8 @@ $(document).ready(function() {
 			$(".successPhoneChk").css("color","green"); 
 			$("#phoneDoubleChk").val("true"); 
 			$("#phone2").attr("disabled",true);
-			location.href="/step02";
+			window.opener.location.href="/step02";
+			window.close();
 		}else{ 
 			$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
 			$(".successPhoneChk").css("color","red"); 
