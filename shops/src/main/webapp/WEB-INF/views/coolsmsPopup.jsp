@@ -42,8 +42,8 @@ h1.infoTit {
 }
 
 main.textBox {
-	padding-top: 3.4em;
-	text-align: center;
+	padding-top: 1.4em;
+	padding-left: 1.4em;
 }
 
 h2.tit {
@@ -95,7 +95,13 @@ $(document).ready(function() {
 	//휴대폰 번호 인증 
 	var code2 = ""; 
 	$("#phoneChk").click(function(){ 
-		alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 
+		if($('#phone').val() == ""){
+			alert("휴대폰 번호를 입력해주세요.");
+			return false;
+		}else{
+			alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 
+		}
+		
 		var phone = $("#phone").val(); 
 	$.ajax({ 
 		type:"GET", 
@@ -112,7 +118,7 @@ $(document).ready(function() {
 				$("#phoneChk2").css("display","inline-block");
 				$(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
 				$(".successPhoneChk").css("color","green");
-				$("#phone").attr("readonly",true); 
+				//$("#phone").attr("readonly",true); 
 				code2 = data; 
 				} 
 			} 
@@ -121,7 +127,7 @@ $(document).ready(function() {
 	
 	//휴대폰 인증번호 대조 
 	$("#phoneChk2").click(function(){ 
-		if($("#phone2").val() == code2){ 
+		if($("#phone2").val() == code2 && $("#phone2").val() != ""){ 
 			$(".successPhoneChk").text("인증번호가 일치합니다.");
 			$(".successPhoneChk").css("color","green"); 
 			$("#phoneDoubleChk").val("true"); 
@@ -141,20 +147,20 @@ $(document).ready(function() {
 <body>
 	<div id="popup">
 		<header class="top">
-			<h1 class="infoTit">coolsms api인증</h1>
+			<h1 class="infoTit">SMS 인증</h1>
 		</header>
 		<main class="textBox">
-			<h2 class="tit">휴대폰인증</h2>
+			<h2 class="tit">휴대폰 인증</h2>
 			<tr class="mobileNo">
-				<th><label for="phone">휴대폰 번호</label></th>
+				<th><label for="phone">(휴대폰 번호 입력후 인증번호 전송을 해주십시오.)</label></th>
 				<td>
 					<p>
 						<input id="phone" type="text" name="phone" title="전화번호 입력" required /> 
-						<span id="phoneChk" class="doubleChk">인증번호 보내기</span>
+						<span id="phoneChk" class="doubleChk"><button>인증번호 전송</button></span>
 						<br />
 						<input id="phone2" type="text" name="phone2" title="인증번호 입력" disabled required />
-						<span id="phoneChk2" class="doubleChk">본인인증</span>
-						<span class="point successPhoneChk">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.
+						<span id="phoneChk2" class="doubleChk"><button>인증번호 확인</button></span>
+						<span class="point successPhoneChk">
 						</span>
 						<input type="hidden" id="phoneDoubleChk" />
 					</p>
@@ -167,9 +173,9 @@ $(document).ready(function() {
 	</div>
 	<footer class="btnBox_todayClose">
 		<form method="post" action="" name="pop_form">
-			<span id="check"><input type="checkbox" value="checkbox"
-				name="chkbox" id="chkday" /> <label for="chkday">오늘 하루동안 보지
-					않기</label> </span>
+			<!-- <span id="check"><input type="checkbox" value="checkbox" name="chkbox" id="chkday" />
+				<label for="chkday">오늘 하루동안 보지 않기</label>
+			</span> -->
 		</form>
 	</footer>
 

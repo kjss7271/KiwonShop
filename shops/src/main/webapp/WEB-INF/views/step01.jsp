@@ -25,9 +25,13 @@
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
-	var smsStatus = 0;
+	var _width = '700';
+	var _height = '380';
+	var _left = Math.ceil((window.screen.width - _width)/2);
+	var _top = Math.ceil((window.screen.height - _height)/2);
+	
 	$('.gbtn').click(function(){
-		const popup = window.open('/coolsmsPopup', '휴대폰인증', 'width=700px,height=800px,scrollbars=yes');
+		const popup = window.open('/coolsmsPopup', '휴대폰인증', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 	});
 	
 	
