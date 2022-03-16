@@ -121,7 +121,7 @@ $(document).ready(function() {
 				//$("#phone").attr("readonly",true); 
 				code2 = data; 
 				} 
-			} 
+			}
 		});
 	});
 	

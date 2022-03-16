@@ -33,7 +33,7 @@ $(document).ready(function() {
 	$('.gbtn').click(function(){
 		const popup = window.open('/coolsmsPopup', '휴대폰인증', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top);
 	});
-	 
+	
 	
 });
 </script>
