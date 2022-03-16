@@ -25,9 +25,26 @@
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
+	$('.sbtnMini').click(function(){
+		if($('input:checkbox[name="agree"]:checked').length >= 3){
+			step03();
+		}else{
+			alert("전체 이용약관에 동의 후 회원가입이 가능합니다.");
+		}
+	});
+
+	//전체동의 체크 , 전체동의 해제
+	$('#agreeAll').click(function(){
+		if($('input:checkbox[name="agree"]:checked').length != 3){
+			$('input[name="agree"]:checkbox').prop("checked", true);
+		}else if($('input:checkbox[name="agree"]:checked').length == 3){
+			$('input[name="agree"]:checkbox').prop("checked", false);
+		}
+	});
 	
-
-
+	function step03(){
+		alert("step03 go");
+	}
 });
 </script>
 </head>
@@ -249,8 +266,11 @@ $(document).ready(function() {
 
 					<div class="agreeWrap">
 						<div class="agreeTxt">이용약관 동의 <span>(필수동의)</span></div>
-
-
+						<ul>
+							<li class="chk">
+								<input type="checkbox" name="agree" id="agreeAll" /><label for="agreeAll" style="color:black;">전체동의</label>
+							</li>
+						</ul>
 						<div class="agreeBox">
 						<div class="agreeContent">
 
@@ -520,7 +540,7 @@ $(document).ready(function() {
 
 							<ul>
 								<li class="chk">
-									<input type="checkbox" id="agree1" /><label for="agree1">이용약관에 동의합니다.</label>
+									<input type="checkbox" name="agree" id="agree1" /><label for="agree1">이용약관에 동의합니다.</label>
 								</li>
 								<li class="btn">
 									<a href="#" class="nbtnMini">전체보기</a>
@@ -572,7 +592,7 @@ $(document).ready(function() {
 
 							<ul>
 								<li class="chk">
-									<input type="checkbox" id="agree2" /><label for="agree2">개인정보 보호를 위한 이용자 <span>동의사항에 동의합니다.</span></label>
+									<input type="checkbox" name="agree" id="agree2" /><label for="agree2">개인정보 보호를 위한 이용자 <span>동의사항에 동의합니다.</span></label>
 								</li>
 								<li class="btn">
 									<a href="#" class="nbtnMini">전체보기</a>
@@ -624,7 +644,7 @@ $(document).ready(function() {
 
 							<ul class="fn">
 								<li class="chk">
-									<input type="checkbox" id="agree3" /><label for="agree3">개인정보 보호를 위한 이용자 <span>동의사항에 동의합니다.</span></label>
+									<input type="checkbox" name="agree" id="agree3" /><label for="agree3">개인정보 보호를 위한 이용자 <span>동의사항에 동의합니다.</span></label>
 								</li>
 								<li class="btn">
 									<a href="#" class="nbtnMini">전체보기</a>
