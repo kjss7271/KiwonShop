@@ -118,7 +118,7 @@ $(document).ready(function() {
 				$("#phoneChk2").css("display","inline-block");
 				$(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
 				$(".successPhoneChk").css("color","green");
-				//$("#phone").attr("readonly",true);
+				//$("#phone").attr("readonly",true); 
 				code2 = data; 
 				} 
 			} 
