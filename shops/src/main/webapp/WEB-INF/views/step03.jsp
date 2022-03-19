@@ -256,13 +256,13 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<th scope="row"><span>이름 *</span></th>
-									<td>김슬기</td>
+									<td><input type="text" class="w134" name="m_name"/></td>
 								</tr>
 								<tr>
 									<th scope="row"><span>아이디 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="text" class="w134" /></li>
+											<li class="r10"><input type="text" class="w134" name="m_id"/></li>
 											<li><a href="#" class="nbtnMini">중복확인</a></li>
 											<li class="pt5"><span class="mvalign">첫 글자는 영문으로 4~16자 까지 가능, 영문, 숫자와 특수기호(_)만 사용 가능</span></li>
 										</ul>
@@ -272,7 +272,7 @@ $(document).ready(function() {
 									<th scope="row"><span>비밀번호 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="password" class="w134" /></li>
+											<li class="r10"><input type="password" class="w134" name="m_pw"/></li>
 											<li><span class="mvalign">※ 영문 / 숫자 혼용으로 4~20자 까지 가능.</span></li>
 										</ul>
 									</td>
@@ -281,7 +281,7 @@ $(document).ready(function() {
 									<th scope="row"><span>비밀번호 확인 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="password" class="w134" /></li>
+											<li class="r10"><input type="password" class="w134" name="m_pw_do"/></li>
 											<li>
 												<span class="mvalign black">* 비밀번호가 일치입니다.</span>
 												<span class="mvalign orange">* 비밀번호가 일치하지 않습니다.</span>
@@ -293,7 +293,7 @@ $(document).ready(function() {
 									<th scope="row"><span>이메일</span></th>
 									<td>
 										<ul class="pta">
-											<li><input type="text" class="w134" /></li>
+											<li><input type="text" class="w134" name="m_email"/></li>
 											<li><span class="valign">&nbsp;@&nbsp;</span></li>
 											<li class="r10"><input type="text" class="w134" /></li>
 											<li>
@@ -325,10 +325,10 @@ $(document).ready(function() {
 										<p>기원에서 진행되는 이벤트와 쇼핑에 대한 정보를 이메일로 받아보시겠습니까?</p>
 										<ul class="question">
 											<li>
-												<input type="radio" name="receive" id="receive_yes" class="radio_t" checked="checked"/><label for="receive_yes">예</label>
+												<input type="radio" name="m_email_status" id="receive_yes" class="radio_t" checked="checked" value="Y"/><label for="receive_yes">예</label>
 											</li>
 											<li>
-												<input type="radio" name="receive" id="receive_no" class="radio_t"/><label for="receive_no">아니오</label>
+												<input type="radio" name="m_email_status" id="receive_no" class="radio_t" value="N"/><label for="receive_no">아니오</label>
 											</li>
 										</ul>
 										<p class="gray">* 거래관련 정보는 고객님의 거래안전을 위하여 이메일 수신거부와 관계없이 발송됩니다.</p>
@@ -339,10 +339,10 @@ $(document).ready(function() {
 									<td>
 										<ul class="pta">
 											<li>
-												<input type="text" class="w134" />&nbsp;
+												<input type="text" class="w134" name="m_address"/>&nbsp;
 											</li>
 											<li><a href="zip.html" class="addressBtn"><span>우편번호 찾기</span></a></li>
-											<li class="pt5"><input type="text" class="addressType" /></li>
+											<li class="pt5"><input type="text" class="addressType" name="m_address_detail"/></li>
 											<li class="cb">
 												<span class="mvalign">※ 상품 배송 시 받으실 주소입니다. 주소를 정확히 적어 주세요.</span>
 											</li>

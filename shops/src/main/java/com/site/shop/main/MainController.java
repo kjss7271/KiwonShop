@@ -39,4 +39,8 @@ public class MainController {
 	public String step02() {
 		return "/step02";
 	}
+	@GetMapping("/step03")
+	public String step03() {
+		return "/step03";
+	}
 }
