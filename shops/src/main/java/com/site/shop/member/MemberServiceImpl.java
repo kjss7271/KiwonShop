@@ -42,4 +42,10 @@ public class MemberServiceImpl implements MemberService {
 					System.out.println(e.getCode()); 
 				}
 			}
+
+	@Override
+	public int join(MemberVo memberVo) {
+		int result = memberMapper.join(memberVo);
+		return result;
+	}
 	}

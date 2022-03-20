@@ -3,24 +3,24 @@ package com.site.shop.member;
 public class MemberVo {
 
 	
-	private String m_id;
-	private String m_pw;
+	private String m_id;//1
+	private String m_pw;//2
 	
-	private String m_idx;
-	private String m_name;
-	private String m_pw_do;
-	private String m_email;
-	private String m_email_status;
-	private String m_address;
-	private String m_address_detail;
-	private String m_phone_tel;
-	private String m_home_tel;
-	private String m_birth;
-	private String agree1;
-	private String agree2;
-	private String agree3;
-	private String business;
-	private String m_email_site;
+	private String m_idx;//3
+	private String m_name;//4
+	private String m_pw_do;//5
+	private String m_email;//6
+	private String m_email_status;//7
+	private String m_address;//8
+	private String m_address_detail;//9
+	private String m_phone_tel;//10
+	private String m_home_tel;//11
+	private String m_birth;//12
+	private String agree1;//13
+	private String agree2;//14
+	private String agree3;//15
+	private String business;//16
+	private String m_email_site;//17
 	
 	
 	

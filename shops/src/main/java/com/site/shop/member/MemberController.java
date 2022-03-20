@@ -37,4 +37,27 @@ public class MemberController {
 		return Integer.toString(randomNumber);
 	}
 	
+	
+	@PostMapping("/joinStart")
+	@ResponseBody
+	public int joinStart(MemberVo memberVo) {
+		System.out.println(memberVo.getM_id());
+		System.out.println(memberVo.getM_pw());
+		System.out.println(memberVo.getM_pw_do());
+		System.out.println(memberVo.getM_name());
+		System.out.println(memberVo.getM_address());
+		System.out.println(memberVo.getM_address_detail());
+		System.out.println(memberVo.getM_phone_tel());
+		System.out.println(memberVo.getM_home_tel());
+		System.out.println("이메일"+memberVo.getM_email());
+		System.out.println("이메일형식"+memberVo.getM_email_site());
+		System.out.println(memberVo.getM_email_status());
+		System.out.println(memberVo.getM_birth());
+		System.out.println(memberVo.getAgree1());
+		System.out.println(memberVo.getAgree2());
+		System.out.println(memberVo.getAgree3());
+		System.out.println(memberVo.getBusiness());
+		int result = memberService.join(memberVo);
+		return result;
+	}
 }

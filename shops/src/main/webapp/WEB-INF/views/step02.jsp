@@ -30,6 +30,7 @@ $(document).ready(function() {
 			step03();
 		}else{
 			alert("전체 이용약관에 동의 후 회원가입이 가능합니다.");
+			return false;
 		}
 	});
 
@@ -43,7 +44,7 @@ $(document).ready(function() {
 	});
 	
 	function step03(){
-		alert("step03 go");
+		location.href="/step03";
 	}
 });
 </script>
@@ -268,7 +269,7 @@ $(document).ready(function() {
 						<div class="agreeTxt">이용약관 동의 <span>(필수동의)</span></div>
 						<ul>
 							<li class="chk">
-								<input type="checkbox" name="agree" id="agreeAll" /><label for="agreeAll" style="color:black;">전체동의</label>
+								<input type="checkbox" name="agreeAll" id="agreeAll" /><label for="agreeAll" style="color:black;">전체동의</label>
 							</li>
 						</ul>
 						<div class="agreeBox">
@@ -660,7 +661,7 @@ $(document).ready(function() {
 						<div class="bCenter">
 							<ul>
 								<li><a href="#" class="nbtnbig">취소하기</a></li>
-								<li><a href="#" class="sbtnMini">가입하기</a></li>
+								<li><a class="sbtnMini">가입하기</a></li>
 							</ul>
 						</div>
 					</div>
