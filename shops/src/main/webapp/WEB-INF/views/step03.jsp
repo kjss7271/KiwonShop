@@ -108,9 +108,6 @@ function overlap(){
 </script>
 </head>
 <body>
-
-
-
 <!--익스레이어팝업-->
 <div id="ieUser" style="display:none">
 	<div class="iewrap">	
