@@ -44,7 +44,7 @@ function join(){
 				"agree1" : "Y",//13
 				"agree2" : "Y",//14
 				"agree3" : "Y",//15
-				"business" : $("#business").val()//16
+				"business" : $("#business").val(),//16
 				"m_email_site" : $("#m_email_site").val()//6
 			},
 		success:function(result){
