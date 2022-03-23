@@ -7,4 +7,6 @@ public interface MemberService {
 	void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);
 
 	int join(MemberVo memberVo);
+
+	int overlap(String m_id);
 }

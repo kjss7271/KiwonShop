@@ -48,4 +48,10 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberMapper.join(memberVo);
 		return result;
 	}
+
+	@Override
+	public int overlap(String m_id) {
+		int result = memberMapper.overlap(m_id);
+		return result;
+	}
 	}

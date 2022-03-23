@@ -51,4 +51,8 @@ public class MainController {
 	public String step05() {
 		return "/step05";
 	}
+	@GetMapping("/zip")
+	public String zip() {
+		return "/zip";
+	}
 }

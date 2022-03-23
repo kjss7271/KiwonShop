@@ -14,4 +14,8 @@
 		values 
 		(#{m_name},#{m_id},#{m_pw},#{m_pw_do},#{m_email},#{m_email_status},#{m_address},#{m_address_detail},#{m_phone_tel},#{m_home_tel},#{m_birth},#{agree1},#{agree2},#{agree3},#{m_email_site},#{business})
 	</insert>
+	<!-- 회원가입(아이디중복확인) -->
+	<select id="overlap" resultType="int">
+		select count(*) from member where m_id=#{m_id}
+	</select>
 </mapper>

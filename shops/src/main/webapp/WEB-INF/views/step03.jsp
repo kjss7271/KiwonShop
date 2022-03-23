@@ -24,43 +24,88 @@
 <script type="text/javascript" src="../js/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-//가입하기
-function join(){
+//회원가입 - 아이디중복체크
+function overlap(){
+	var overlap = false;
 	$.ajax({
-		url:"/joinStart",
+		url:"/overlap",
 		type:"POST",
 		data:{
-				"m_name" : $("#m_name").val(), //1
-				"m_id" : $("#m_id").val(),//2
-				"m_pw" : $("#m_pw").val(),//3
-				"m_pw_do" : $("#m_pw").val(),//4
-				"m_email" : $("#m_email").val(),//5
-				"m_email_status" : $("#m_email_status").val(),//7
-				"m_address" : $("#m_address").val(),//8
-				"m_address_detail" : $("#m_address_detail").val(),//9
-				"m_phone_tel" : $('#firstHnum').val() + $('#middlePnum').val() + $('#lastPnum').val(),//10
-				"m_home_tel" : $('#firstHnum').val() + $('#middleHnum').val() + $('#lastHnum').val(),//11
-				"m_birth" : $('#jYear').val() + $('#jMonth').val() + $('#jDay').val(),//12
-				"agree1" : "Y",//13
-				"agree2" : "Y",//14
-				"agree3" : "Y",//15
-				"business" : $("#business").val(),//16
-				"m_email_site" : $("#m_email_site").val()//6
-			},
-		success:function(result){
-			if(result == 1){
-				location.href="/step04";
-			}else{
-				alert("실패");
-				location.href="/step03";
-			}
+			"m_id":$("#m_id").val()
 		},
-		error:function(){
-			alert("에러");
-		}
-	});
-}
-	</script>
+		success:function(result){
+				if ($('#m_id').val() == '') {//미입력시
+					$('#chkId').css('display', '');
+					$('#chkId').css('color', 'blue');
+					$('#okId').css('display', 'none');
+					$('#noId').css('display', 'none');
+					return false;
+				} else {
+					if (result == 1) {//사용불가능할떄
+						overlap = false;
+						if (overlap == false) {
+							$('#noId').css('display', '');
+							$('#noId').css('color', 'red');
+							$('#okId').css('display', 'none');
+							$('#chkId').css('display', 'none');
+						}
+					} else {//사용가능할때
+						overlap = true;
+						if (overlap == true) {
+							$('#okId').css('display', '');
+							$('#okId').css('color', 'green');
+							$('#noId').css('display', 'none');
+							$('#chkId').css('display', 'none');
+						}
+					}
+				}
+			},
+			error : function() {
+				alert("에러");
+			}
+
+		});
+	}
+
+	//가입하기
+	function join() {
+		$.ajax({
+			url : "/joinStart",
+			type : "POST",
+			data : {
+				"m_name" : $("#m_name").val(),
+				"m_id" : $("#m_id").val(),
+				"m_pw" : $("#m_pw").val(),
+				"m_pw_do" : $("#m_pw").val(),
+				"m_email" : $("#m_email").val(),
+				"m_email_status" : $("#m_email_status").val(),
+				"m_address" : $("#m_address").val(),
+				"m_address_detail" : $("#m_address_detail").val(),
+				"m_phone_tel" : $('#firstHnum').val() + $('#middlePnum').val()
+						+ $('#lastPnum').val(),
+				"m_home_tel" : $('#firstHnum').val() + $('#middleHnum').val()
+						+ $('#lastHnum').val(),
+				"m_birth" : $('#jYear').val() + $('#jMonth').val()
+						+ $('#jDay').val(),
+				"agree1" : "Y",
+				"agree2" : "Y",
+				"agree3" : "Y",
+				"business" : $("#business").val(),
+				"m_email_site" : $("#m_email_site").val()
+			},
+			success : function(result) {
+				if (result == 1) {
+					location.href = "/step04";
+				} else {
+					alert("실패");
+					location.href = "/step03";
+				}
+			},
+			error : function() {
+			}
+		});
+	}
+</script>
 </head>
 <body>
 
@@ -292,7 +337,7 @@ function join(){
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="row"><span>이름 *</span><button class="nbtnbigs" onclick="test()">sss</button></th>
+									<th scope="row"><span>이름 *</span></th>
 									<td><input type="text" class="w134" id="m_name"/></td>
 								</tr>
 								<tr>
@@ -300,7 +345,10 @@ function join(){
 									<td>
 										<ul class="pta">
 											<li class="r10"><input type="text" class="w134" id="m_id"/></li>
-											<li><a href="#" class="nbtnMini">중복확인</a></li>
+											<li><a href="javascript:void(0)" onclick="overlap()" class="nbtnMini">중복확인</a></li>
+											<p id="okId" style="display:none;">사용가능한 아이디입니다.</p>
+											<p id="noId" style="display:none;">이미 사용중이거나 사용할 수 없는 아이디입니다.</p>
+											<p id="chkId" style="display:none;">아이디를 입력해주세요.</p>
 											<li class="pt5"><span class="mvalign">첫 글자는 영문으로 4~16자 까지 가능, 영문, 숫자와 특수기호(_)만 사용 가능</span></li>
 										</ul>
 									</td>
@@ -378,7 +426,7 @@ function join(){
 											<li>
 												<input type="text" class="w134" id="m_address"/>&nbsp;
 											</li>
-											<li><a href="zip.html" class="addressBtn"><span>우편번호 찾기</span></a></li>
+											<li><a href="/zip" class="addressBtn"><span>우편번호 찾기</span></a></li>
 											<li class="pt5"><input type="text" class="addressType" id="m_address_detail"/></li>
 											<li class="cb">
 												<span class="mvalign">※ 상품 배송 시 받으실 주소입니다. 주소를 정확히 적어 주세요.</span>
@@ -591,6 +639,14 @@ $(function(){
 			$('#fancybox-content').height($(this).contents().find('body').height());
 			});
 		}
+	});
+	$('.sbtnMini').click(function(){
+	$('.memberbd').find("input[type=text]").each(function(index, item){
+		if($(this).val().trim() == ''){
+			alert("빈칸존재");
+			return false;
+			}
+		});
 	});
 
 
