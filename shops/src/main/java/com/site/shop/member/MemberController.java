@@ -46,11 +46,10 @@ public class MemberController {
 		int result = memberService.join(memberVo);
 		return result;
 	}
-	
+	//회원가입(아이디중복체크)
 	@PostMapping("/overlap")
 	@ResponseBody
 	public int overlap(@RequestParam String m_id) {
-		System.out.println(m_id);
 		int result = memberService.overlap(m_id);
 		return result;
 	}
