@@ -363,10 +363,10 @@ function overlap(){
 									<th scope="row"><span>비밀번호 확인 *</span></th>
 									<td>
 										<ul class="pta">
-											<li class="r10"><input type="password" class="w134" id="m_pw_do"/></li>
+											<li class="r10"><input type="password" class="w134" id="m_pw_do" /></li>
 											<li>
-												<span class="mvalign black">* 비밀번호가 일치입니다.</span>
-												<span class="mvalign orange">* 비밀번호가 일치하지 않습니다.</span>
+												<span class="mvalignGR green" style="display:none; color:green;">* 비밀번호가 일치합니다.</span>
+												<span class="mvalignOG orange" style="display:none;">* 비밀번호가 일치하지 않습니다.</span>
 											</li>
 										</ul>
 									</td>
@@ -377,9 +377,9 @@ function overlap(){
 										<ul class="pta">
 											<li><input type="text" class="w134" id="m_email"/></li>
 											<li><span class="valign">&nbsp;@&nbsp;</span></li>
-											<li class="r10"><input type="text" class="w134" /></li>
+											<li class="r10"><input type="text" class="w134" id="m_email_site"/></li>
 											<li>
-												<select id="m_email_site">
+												<select id="m_email_site_sel">
 													<option value="#" selected="selected">직접입력</option>
 													<option value="naver.com">naver.com</option>
 													<option value="daum.net">daum.net</option>
@@ -637,16 +637,45 @@ $(function(){
 			});
 		}
 	});
+	//가입하기 클릭 시
 	$('.sbtnMini').click(function(){
-	$('.memberbd').find("input[type=text]").each(function(index, item){
-		if($(this).val().trim() == ''){
-			alert("빈칸존재");
-			return false;
-			}
+		$('.memberbd').find("input[type=text]").each(function(index, item){
+			if($(this).val().trim() == ''){
+				alert("빈칸존재");
+				return false;
+				}
+			});
+		
+	});
+	
+		//비밀번호 체크
+		$('#m_pw_do').focusin(function(){
+			$('.mvalignOG').css('display','none');
+			$('.mvalignGR').css('display','none');
 		});
+		
+		$('#m_pw_do').focusout(function(){
+		if($('#m_pw').val() != $('#m_pw_do').val()){
+			$('.mvalignOG').css('display','');
+			$('.mvalignGR').css('display','none');
+		}else{
+			$('.mvalignGR').css('display','');
+			$('.mvalignOG').css('display','none');
+		}
 	});
 
-
+		
+	//이메일 사이트 체크
+	$('#m_email_site_sel').click(function(){
+		if($('#m_email_site_sel').val() != ''){
+			var text = "";
+				text = $('#m_email_site_sel').val();
+				$('#m_email_site').val(text);
+				if($('#m_email_site').val() == "#"){
+					$('#m_email_site').val('');
+				}
+		}
+	});
 });
 </script>
 				</div>
